@@ -1,0 +1,13 @@
+﻿data/raw/images/*
+data/raw/texts/*
+data/raw/tabular/*.csv
+!data/raw/images/.gitkeep
+!data/raw/texts/.gitkeep
+!data/raw/tabular/.gitkeep
+__pycache__/
+*.pyc
+.env
+venv/
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db

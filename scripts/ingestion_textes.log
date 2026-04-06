@@ -1,0 +1,8 @@
+2026-04-06 08:23:00,925 - INFO - 📂 Chargement : C:\Users\Rog\Desktop\ImmoVision360_DataLake\data\raw\tabular\listings.csv
+2026-04-06 08:23:03,301 - INFO -    → 81853 annonces totales
+2026-04-06 08:23:03,312 - INFO - 🎯 Quartier 'Élysée' : 2625 annonces
+2026-04-06 08:23:03,356 - INFO - 📂 Chargement : C:\Users\Rog\Desktop\ImmoVision360_DataLake\data\raw\tabular\reviews.csv
+2026-04-06 08:23:15,087 - INFO -    → 2228691 reviews totales
+2026-04-06 08:23:15,121 - INFO - 🎯 Reviews pour Élysée : 71027
+2026-04-06 08:23:15,275 - INFO - 📊 Regroupement des reviews par annonce...
+2026-04-06 08:23:20,016 - INFO -    → 1958 annonces avec reviews valides
