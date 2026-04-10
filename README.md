@@ -40,6 +40,8 @@ python scripts/run_all_pipeline.py
 ## 📊 Résultats du Diagnostic (Quartier Élysée)
 *Les graphiques et analyses détaillées sont générés automatiquement dans le dossier :* `eda_outputs/`
 
+> **Note importante :** Pour comprendre à quelles questions répondent les graphiques (Hypothèses 1, 2 et 3), consultez la [**Synthèse et Explication des Graphiques**](SYNTHESE_GRAPHIQUES.md).
+
 - **Indice de concentration :** 59% des annonces contrôlées par 5% des hôtes.
 - **Taux de professionnalisation (NLP) :** 18.6% d'avis typés "hôteliers".
 - **Standardisation visuelle :** Tendance détectée sur les appartements à haute rotation.
