@@ -1,49 +1,55 @@
-﻿# ImmoVision 360 — Data Lake Bronze | Phase 1
+# ImmoVision 360 — Intelligence Urbaine & Data Lake
 
-## Titre et Contexte
+## 🏙️ Contexte et Mission
+**ImmoVision 360** est une plateforme d'aide à la décision stratégique destinée à la **Mairie de Paris**. L'objectif est de transformer des flux de données hétérogènes (multimodaux) en un diagnostic précis sur le phénomène de **gentrification touristique** dans le quartier de l'Élysée.
 
-Ce dépôt constitue le livrable de la **Phase 1** du projet **ImmoVision 360**, réalisé dans le cadre du cours *Collecte et exploration des données*.
-
-**Mission :** Construire la zone Bronze (Raw Data) du Data Lake destiné à analyser le phénomène de gentrification dans le quartier de l'**Élysée à Paris**, à partir des données publiques de la plateforme **Inside Airbnb**.
-
-**Commanditaire fictif :** Mairie de Paris (Anne Hidalgo)
-
-**Objectif analytique :** Tester trois hypothèses sur la gentrification :
-- 🏠 Hypothèse Standardisation — uniformisation visuelle des logements (IA Vision)
-- 💬 Hypothèse Déshumanisation — disparition du lien social dans les avis (NLP)
-- 💰 Hypothèse Machine à Cash — concentration des revenus (Stats)
+### Les 3 Hypothèses de Diagnostic :
+- 💰 **Machine à Cash :** Concentration industrielle des biens (Top 5% des hôtes).
+- 💬 **Déshumanisation :** Rupture du lien social détectée par analyse **NLP** des avis.
+- 🏠 **Standardisation :** Uniformisation visuelle "Airbnb-style" détectée par **IA Vision**.
 
 ---
 
-## Notice d'Exécution
+## 🚀 Architecture du Projet
+Le projet suit une architecture de Data Lake moderne (Bronze ➔ Silver ➔ Gold) :
+
+1.  **Collecte (Bronze) :** Ingestion massive d'images (.jpg), de témoignages (.txt) et de métriques Airbnb (.csv).
+2.  **Intelligence (Silver/Gold) :** 
+    - Analyse de sentiment et mots-clés pro via **NLP**.
+    - Analyse de luminosité et contraste via **Computer Vision**.
+3.  **Warehouse :** Stockage structuré dans **PostgreSQL** pour corréler les scores IA avec les données financières.
+4.  **Décision (EDA) :** Génération automatique de diagnostics visuels et recommandations politiques.
+
+---
+
+## 🛠️ Installation et Exécution
 
 ### Prérequis
-pip install requests pandas Pillow tqdm
+- Python 3.9+
+- PostgreSQL (Base `immovision` avec table `elysee_tabular`)
+- Bibliothèques : `pip install pandas sqlalchemy psycopg2 pillow tqdm matplotlib`
 
-### Étape 1 — Images
-python scripts/01_ingestion_images.py
-
-### Étape 2 — Textes
-python scripts/02_ingestion_textes.py
-
-### Étape 3 — Sanity Check
-python scripts/03_sanity_check.py
-
----
-
-## Audit des Données — Résultats du Sanity Check
-
-Généré le : 2026-04-06 | Quartier : Élysée
-
-| Source        | Attendues | Collectées | Taux  | Manquants |
-|---------------|-----------|------------|-------|-----------|
-| Images (.jpg) | 2 625     | 2 492      | 94.9% | 133       |
-| Textes (.txt) | 2 625     | 1 958      | 74.6% | 667       |
+### Lancer le Pipeline Complet
+Pour exécuter l'ensemble de la chaîne de valeur (de l'ingestion au diagnostic final) :
+```bash
+python scripts/run_all_pipeline.py
+```
 
 ---
 
-## Analyse des Pertes
+## 📊 Résultats du Diagnostic (Quartier Élysée)
+*Les graphiques et analyses détaillées sont générés automatiquement dans le dossier :* `eda_outputs/`
 
-**Images (133 manquantes — 5.1%) :** Liens expirés (HTTP 404) ou blocage anti-bot (HTTP 429) côté Airbnb. Taux de 94.9% excellent pour un scraping sans infrastructure dédiée.
+- **Indice de concentration :** 59% des annonces contrôlées par 5% des hôtes.
+- **Taux de professionnalisation (NLP) :** 18.6% d'avis typés "hôteliers".
+- **Standardisation visuelle :** Tendance détectée sur les appartements à haute rotation.
 
-**Textes (667 manquants — 25.4%) :** Ces annonces n'ont aucun commentaire dans reviews.csv. Il s'agit de biens récents ou jamais réservés — ce n'est pas une défaillance technique mais une réalité métier.
+---
+
+## 📁 Structure du Dépôt
+- `data/raw/` : Matière brute (Images, Textes).
+- `data/processed/` : Scores générés par l'IA.
+- `scripts/` : Pipeline complet (01 à 08 + orchestrateur).
+- `eda_outputs/` : Livrables pour la Mairie de Paris.
+
+**Auteur :** Projet ImmoVision 360 - Collecte & Exploration des Données
